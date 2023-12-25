@@ -102,7 +102,7 @@ module.exports = (() => {
 						for(let i = 0; i < ret.badges.length; i++){
 							badgesList.push(ret.badges[i].id);
 						}
-						if (this.badgeUserIDs.includes(ret.userId) &&!badgesList.includes("a")){
+						if (this.badgeUserIDs.includes(ret.userId) && !badgesList.includes("a")){
 							ret.badges.push({
 								id: "a",
 								icon: "6bdc42827a38498929a4920da12695d9", 
