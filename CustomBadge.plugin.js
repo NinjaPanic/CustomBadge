@@ -1,7 +1,7 @@
 /**
  * @name CustomBadge
  * @author NinjaPanic
- * @version 1.0.2
+ * @version 1.0.3
  * @source https://github.com/NinjaPanic/CustomBadge
  * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
  */
@@ -38,7 +38,7 @@ module.exports = (() => {
 				"discord_id": "1139652745276698674",
 				"github_username": "NinjaPanic"
 			}],
-			"version": "1.0.2",
+			"version": "1.0.3",
 			"description": "Unlock all discord badges and add a custom one",
 			"github": "https://github.com/NinjaPanic/CustomBadge",
 			"github_raw": "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
