@@ -1,9 +1,9 @@
 /**
  * @name CustomBadge
  * @author NinjaPanic
- * @version 1.0.1
+ * @version 1.0.2
  * @source https://github.com/NinjaPanic/CustomBadge
- * @updateUrl https://raw.githubusercontent.com/riolubruh/YABDP4Nitro/main/YABDP4Nitro.plugin.js  
+ * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
  */
 /*@cc_on
 @if(@_jscript)
@@ -38,12 +38,12 @@ module.exports = (() => {
 				"discord_id": "1139652745276698674",
 				"github_username": "NinjaPanic"
 			}],
-			"version": "1.0.1",
+			"version": "1.0.2",
 			"description": "Unlock all discord badges and add a custom one",
-			"github": "https://github.com/riolubruh/YABDP4Nitro",
-			"github_raw": "https://raw.githubusercontent.com/riolubruh/YABDP4Nitro/main/YABDP4Nitro.plugin.js"
+			"github": "https://github.com/NinjaPanic/CustomBadge",
+			"github_raw": "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
 		},
-		"main": "YABDP4Nitro.plugin.js"
+		"main": "CustomBadge.plugin.js"
 	};
 
 	return !global.ZeresPluginLibrary ? class {
@@ -83,7 +83,7 @@ module.exports = (() => {
 				DiscordClassModules,
 				PluginUpdater
 			} = Api;
-			return class YABDP4Nitro extends Plugin {
+			return class CustomBadge extends Plugin {
 	
 				saveAndUpdate(){	
 					try{
@@ -94,7 +94,7 @@ module.exports = (() => {
 				} //End of saveAndUpdate()
 				
 				honorBadge(){
-					BdApi.Patcher.after("YABDP4Nitro", this.userProfileMod, "getUserProfile", (_,args,ret) => {
+					BdApi.Patcher.after("CustomBadge", this.userProfileMod, "getUserProfile", (_,args,ret) => {
 						if(ret == undefined) return;
 						const badgesList = [];
 						for(let i = 0; i < ret.badges.length; i++){
@@ -169,28 +169,21 @@ module.exports = (() => {
 									if(badge.firstChild.src != icon) badge.firstChild.src = icon;
 								});		
 							}
-							const qry2 = document.querySelectorAll('[aria-label="YABDP4Nitro Creator!"]');
+							/*const qry2 = document.querySelectorAll('[aria-label=""]');
 							if(qry2.length > 0){
 								qry2.forEach((obj) => {
 									const icon = "https://i.imgur.com/bYGGXnq.gif";
 									const badge = obj;
 									if(badge.firstChild.src != icon) badge.firstChild.src = icon;
 								});		
-							}
-							const qry3 = document.querySelectorAll('[aria-label="YABDP4Nitro Contributor!"]');
-							if(qry3.length > 0){
-								qry3.forEach((obj) => {
-									const icon = "https://i.imgur.com/bYGGXnq.gif";
-									const badge = obj;
-									if(badge.firstChild.src != icon) badge.firstChild.src = icon;
-								});		
-							}
+							}TODO: setting for custom badge*/
+
 						}
 					}
 					
 					if(this.profileRenderer == undefined) this.profileRenderer = WebpackModules.getAllByProps("default").filter((obj) => obj.default.toString().includes("CLYDE_SETTINGS"))[0];
 					
-					BdApi.Patcher.after("YABDP4Nitro", this.profileRenderer, "default", (_,args,ret) => {
+					BdApi.Patcher.after("CustomBadge", this.profileRenderer, "default", (_,args,ret) => {
 						try{
 							applyCustomBadgeIcon(this);
 						}catch(err){
@@ -199,7 +192,7 @@ module.exports = (() => {
 					});
 					
 					if(this.profileCustomizationModule == undefined) this.profileCustomizationModule = WebpackModules.getByProps("getTryItOutThemeColors");
-					BdApi.Patcher.after("YABDP4Nitro", this.profileCustomizationModule, "getAllTryItOut", () => {
+					BdApi.Patcher.after("CustomBadge", this.profileCustomizationModule, "getAllTryItOut", () => {
 						try{
 							applyCustomBadgeIcon(this);
 						}catch(err){
@@ -207,7 +200,7 @@ module.exports = (() => {
 						}
 					});
 					
-					BdApi.Patcher.after("YABDP4Nitro", this.profileCustomizationModule, "getAllPending", () => {
+					BdApi.Patcher.after("CustomBadge", this.profileCustomizationModule, "getAllPending", () => {
 						try{
 							applyCustomBadgeIcon(this);
 						}catch(err){
