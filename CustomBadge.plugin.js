@@ -96,7 +96,7 @@ module.exports = (() => {
 				
 				honorBadge(){
 					BdApi.Patcher.after("CustomBadge", this.userProfileMod, "getUserProfile", (_,args,ret) => {
-						if(!this.badgeUserIDs.includes(ret.id)) this.badgeUserIDs.push(ret.id);
+						if(!this.badgeUserIDs.includes(user.id)) this.badgeUserIDs.push(user.id);
 						if(ret == undefined) return;
 						if(ret.userId == undefined) return;
 						const badgesList = [];
@@ -229,7 +229,7 @@ module.exports = (() => {
 					PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), this._config.info.github_raw);
 					this.userProfileMod = WebpackModules.getByProps("getUserProfile");
 					this.saveAndUpdate();
-					if(!this.badgeUserIDs.includes(ret.id)) this.badgeUserIDs.push(ret.id);
+					if(!this.badgeUserIDs.includes(user.id)) this.badgeUserIDs.push(user.id);
 				}
 				
 			};
