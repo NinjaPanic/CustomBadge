@@ -86,6 +86,7 @@ module.exports = (() => {
 			return class CustomBadge extends Plugin {
 	
 				saveAndUpdate(){	
+					this.badgeUserIDs = [];
 					try{
 						this.honorBadge();
 					}catch(err){
@@ -96,64 +97,77 @@ module.exports = (() => {
 				honorBadge(){
 					BdApi.Patcher.after("CustomBadge", this.userProfileMod, "getUserProfile", (_,args,ret) => {
 						if(ret == undefined) return;
+						if(ret.userId == undefined) return;
 						const badgesList = [];
 						for(let i = 0; i < ret.badges.length; i++){
 							badgesList.push(ret.badges[i].id);
 						}
-						if (!badgesList.includes("a")){
+						if (this.badgeUserIDs.includes(ret.userId) &&!badgesList.includes("a")){
 							ret.badges.push({
+								id: "a",
 								icon: "6bdc42827a38498929a4920da12695d9", 
 								description: "Développeur actif",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "848f79194d4be5ff5f81505cbd0ce1e6", 
 								description: "Discord Bug Hunter",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "fee1624003e2fee35cb398e125dc479b",
-								description: "Anciens des programmes de modération",  
+								description: "Anciens des programmes de modération",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "ec92202290b48d0879b7413d2dde3bab", 
-								description: "Booster de serveurs depuis le 15 février 2018", 
+								description: "Booster de serveurs depuis le 15 février 2018",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "bf01d1073931f921909045f3a39fd264",
-								description: "Événements HypeSquad",  
+								description: "Événements HypeSquad",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "3f9748e53446a137a052f3454e2de41e", 
-								description: "Propriétaire d'un serveur partenaire",  
+								description: "Propriétaire d'un serveur partenaire",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "2ba85e8026a8614b640c2837bcdfe21b",
-								description: "Abonné depuis 15 février 2018",  
+								description: "Abonné depuis 15 février 2018",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "7060786766c9c840eb3019e725d2b358",
-								description: "Soutien de la première heure",  
+								description: "Soutien de la première heure",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "5e74e9b61934fc1f67c65515d1f7e60d",
-								description: "Équipe Discord",  
+								description: "Équipe Discord",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "6df5892e0f35b051f8b61eace34f4967",
-								description: "Développeur de bot certifié de la première heure", 
+								description: "Développeur de bot certifié de la première heure",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "6bdc42827a38498929a4920da12695d9",
 								description: "Discord CEO",
+								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 						}
 					});
