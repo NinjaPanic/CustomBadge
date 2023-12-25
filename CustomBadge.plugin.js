@@ -3,7 +3,7 @@
  * @author NinjaPanic
  * @version 1.0.0
  * @source https://github.com/NinjaPanic/CustomBadge
- * @updateUrl https://raw.githubusercontent.com/riolubruh/YABDP4Nitro/main/YABDP4Nitro.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/riolubruh/YABDP4Nitro/main/YABDP4Nitro.plugin.js  
  */
 /*@cc_on
 @if(@_jscript)
