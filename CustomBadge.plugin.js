@@ -3,7 +3,7 @@
  * @author NinjaPanic
  * @version 1.0.4
  * @source https://github.com/NinjaPanic/CustomBadge
- * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js 
  */
 /*@cc_on
 @if(@_jscript)
