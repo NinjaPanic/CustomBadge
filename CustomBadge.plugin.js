@@ -1,7 +1,7 @@
 /**
  * @name CustomBadge
  * @author NinjaPanic
- * @version 1.0.3
+ * @version 1.0.4
  * @source https://github.com/NinjaPanic/CustomBadge
  * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
  */
@@ -38,7 +38,7 @@ module.exports = (() => {
 				"discord_id": "1139652745276698674",
 				"github_username": "NinjaPanic"
 			}],
-			"version": "1.0.3",
+			"version": "1.0.4",
 			"description": "Unlock all discord badges and add a custom one",
 			"github": "https://github.com/NinjaPanic/CustomBadge",
 			"github_raw": "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
@@ -79,13 +79,29 @@ module.exports = (() => {
 	} : (([Plugin, Api]) => {
 		const plugin = (Plugin, Api) => {
 			const {
+				Settings,
+				Utilities,
 				WebpackModules,
 				DiscordClassModules,
 				PluginUpdater
 			} = Api;
 			return class CustomBadge extends Plugin {
-	
-				saveAndUpdate(){	
+				defaultSettings = {
+					"Discord ID": 0
+				};
+
+				settings = Utilities.loadSettings(this.getName(), this.defaultSettings);
+				getSettingsPanel() {
+					return Settings.SettingPanel.build(_ => this.saveAndUpdate(), ...[
+						new Settings.SettingGroup("Discord ID").append(
+							new Settings.Textbox("Discord ID", "Put your discord ID otherwise you will see everyone with the badges", this.settings.DiscordID, value => this.settings.DiscordID = value)
+						)
+					])	
+				}
+
+
+				saveAndUpdate(){
+					Utilities.saveSettings(this.getName(), this.settings);
 					this.badgeUserIDs = [];
 					try{
 						this.honorBadge();
@@ -95,15 +111,12 @@ module.exports = (() => {
 				} //End of saveAndUpdate()
 				
 				honorBadge(){
-					BdApi.Patcher.after("CustomBadge", this.userProfileMod, "getUserProfile", (_,args,ret) => {
-						if(!this.badgeUserIDs.includes(user.id)) this.badgeUserIDs.push(user.id);
-						if(ret == undefined) return;
-						if(ret.userId == undefined) return;
+					BdApi.Patcher.after("CustomBadge", this.userProfileMod, "getUserProfile", (_,args,ret,user) => {
 						const badgesList = [];
 						for(let i = 0; i < ret.badges.length; i++){
 							badgesList.push(ret.badges[i].id);
 						}
-						if (this.badgeUserIDs.includes(ret.userId) && !badgesList.includes("a")){
+						if(ret.userId == this.settings.DiscordID && !badgesList.includes("a")){
 							ret.badges.push({
 								id: "a",
 								icon: "6bdc42827a38498929a4920da12695d9", 
@@ -166,7 +179,7 @@ module.exports = (() => {
 							});
 							ret.badges.push({
 								id: "a",
-								icon: "6bdc42827a38498929a4920da12695d9",
+								icon: "ec92202290b48d0879b7413d2dde3bab",
 								description: "Discord CEO",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
@@ -225,11 +238,12 @@ module.exports = (() => {
 				} //End of honorBadge()
 				
 				
-				onStart() {
+				onStart(ret) {
 					PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), this._config.info.github_raw);
 					this.userProfileMod = WebpackModules.getByProps("getUserProfile");
 					this.saveAndUpdate();
-					if(!this.badgeUserIDs.includes(user.id)) this.badgeUserIDs.push(user.id);
+					a = ret.userId;
+
 				}
 				
 			};
