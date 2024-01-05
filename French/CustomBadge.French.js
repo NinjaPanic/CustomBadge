@@ -120,7 +120,7 @@ module.exports = (() => {
 							ret.badges.push({
 								id: "a",
 								icon: "6bdc42827a38498929a4920da12695d9", 
-								description: "Active Developer",
+								description: "Développeur actif",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
@@ -132,49 +132,49 @@ module.exports = (() => {
 							ret.badges.push({
 								id: "a",
 								icon: "fee1624003e2fee35cb398e125dc479b",
-								description: "Moderator Programmes Alumni",
+								description: "Anciens des programmes de modération",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "ec92202290b48d0879b7413d2dde3bab", 
-								description: "Server Boosting since 15 Jul 2018",
+								description: "Booster de serveurs depuis le 15 février 2018",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "bf01d1073931f921909045f3a39fd264",
-								description: "HypeSquad Events",
+								description: "Événements HypeSquad",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "3f9748e53446a137a052f3454e2de41e", 
-								description: "Partnered Server Owner",
+								description: "Propriétaire d'un serveur partenaire",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "2ba85e8026a8614b640c2837bcdfe21b",
-								description: "Subscriber since 15 Jul 2018",
+								description: "Abonné depuis 15 février 2018",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "7060786766c9c840eb3019e725d2b358",
-								description: "Early Supporter",
+								description: "Soutien de la première heure",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "5e74e9b61934fc1f67c65515d1f7e60d",
-								description: "Discord Staff",
+								description: "Équipe Discord",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
 								id: "a",
 								icon: "6df5892e0f35b051f8b61eace34f4967",
-								description: "Early Verified Bot Developer",
+								description: "Développeur de bot certifié de la première heure",
 								link: "https://github.com/NinjaPanic/CustomBadge"
 							});
 							ret.badges.push({
