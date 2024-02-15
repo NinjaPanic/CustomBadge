@@ -1,7 +1,7 @@
 /**
  * @name CustomBadge
  * @author NinjaPanic
- * @version 1.0.5
+ * @version 1.0.6
  * @source https://github.com/NinjaPanic/CustomBadge
  * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js 
  */
@@ -38,7 +38,7 @@ module.exports = (() => {
 				"discord_id": "1139652745276698674",
 				"github_username": "NinjaPanic"
 			}],
-			"version": "1.0.5",
+			"version": "1.0.6",
 			"description": "Unlock all discord badges and add a custom one",
 			"github": "https://github.com/NinjaPanic/CustomBadge",
 			"github_raw": "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
@@ -192,7 +192,7 @@ module.exports = (() => {
 							const qry = document.querySelectorAll('[aria-label="Discord CEO"]');
 							if(qry.length > 0){
 								qry.forEach((obj) => {
-									const icon = "https://cdn3.emoji.gg/emojis/6654-blurple-crown.png";
+									const icon = "https://support.sudomemo.net/wp-content/uploads/2020/12/Reason-2-Discord-Events-970x546.png";
 									const badge = obj;
 									if(badge.firstChild.src != icon) badge.firstChild.src = icon;
 								});		
