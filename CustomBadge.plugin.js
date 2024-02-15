@@ -192,7 +192,7 @@ module.exports = (() => {
 							const qry = document.querySelectorAll('[aria-label="Discord CEO"]');
 							if(qry.length > 0){
 								qry.forEach((obj) => {
-									const icon = "https://support.sudomemo.net/wp-content/uploads/2020/12/Reason-2-Discord-Events-970x546.png";
+									const icon = "https://cdn-icons-png.flaticon.com/512/1657/1657088.png";
 									const badge = obj;
 									if(badge.firstChild.src != icon) badge.firstChild.src = icon;
 								});		
