@@ -84,7 +84,6 @@ module.exports = (() => {
           addBadge("early", "7060786766c9c840eb3019e725d2b358", "Early Supporter");
           addBadge("staff", "5e74e9b61934fc1f67c65515d1f7e60d", "Discord Staff");
           addBadge("botdev", "6df5892e0f35b051f8b61eace34f4967", "Early Verified Bot Developer");
-          addBadge("ceo", "ec92202290b48d0879b7413d2dde3bab", "Discord CEO");
         });
       }
     };
