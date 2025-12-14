@@ -2,7 +2,7 @@
  * @name CustomBadge
  * @author NinjaPanic
  * @authorLink https://github.com/NinjaPanic
- * @version 3.1.0
+ * @version 3.1.2
  * @invite K3pdByqGRD
  * @source https://github.com/NinjaPanic/CustomBadge
  * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
@@ -20,7 +20,7 @@ module.exports = (() => {
           github_username: "NinjaPanic"
         }
       ],
-      version: "3.1.1",
+      version: "3.1.2",
       description: "Unlock all Discord badges",
       github: "https://github.com/NinjaPanic/CustomBadge",
       github_raw: "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
@@ -70,7 +70,7 @@ module.exports = (() => {
             const key = icon + description;
             if (!existing.has(key)) {
               existing.add(key);
-              ret.badges.push({ id, icon, description, link: "https://github.com/YourUsername/CustomProfileBadge" });
+              ret.badges.push({ id, icon, description, link: "https://github.com/NinjaPanic/CustomProfileBadge" });
             }
           };
 
