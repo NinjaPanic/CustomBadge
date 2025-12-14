@@ -1,10 +1,12 @@
 /**
  * @name CustomBadge
  * @author NinjaPanic
- * @version 2.0.0
- * @description Unlock all Discord badges.
+ * @authorLink https://github.com/NinjaPanic
+ * @version 3.1.0
+ * @invite K3pdByqGRD
  * @source https://github.com/NinjaPanic/CustomBadge
  * @updateUrl https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js
+ * @description Unlock all Discord badges.
  */
 
 module.exports = (() => {
@@ -14,11 +16,11 @@ module.exports = (() => {
       authors: [
         {
           name: "NinjaPanic",
-          discord_id: "1139652745276698674",
+          discord_id: "1200195920923463700",
           github_username: "NinjaPanic"
         }
       ],
-      version: "2.0.0",
+      version: "3.1.0",
       description: "Unlock all Discord badges",
       github: "https://github.com/NinjaPanic/CustomBadge",
       github_raw: "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
@@ -29,9 +31,9 @@ module.exports = (() => {
   return !global.ZeresPluginLibrary ? class {
     constructor() { this._config = config; }
     load() {
-      BdApi.showConfirmationModal("Library Missing", `The library needed for ${config.info.name} is missing. Click Download to install it.`, {
-        confirmText: "Download",
-        cancelText: "Cancel",
+      BdApi.showConfirmationModal("Library Missing", `La bibliothèque nécessaire pour ${config.info.name} est manquante. Cliquez sur Télécharger pour l'installer.`, {
+        confirmText: "Télécharger",
+        cancelText: "Annuler",
         onConfirm: () => {
           require("request").get("https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js", async (e, b) => {
             if (e) return require("electron").shell.openExternal("https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js");
@@ -45,24 +47,23 @@ module.exports = (() => {
   } : (([Plugin, Api]) => {
     const { WebpackModules, PluginUpdater } = Api;
 
-    return class CustomBadge extends Plugin {
+    return class CustomProfileBadge extends Plugin {
 
       onStart() {
         PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), this._config.info.github_raw);
-        BdApi.Patcher.unpatchAll("CustomBadge");
-
         this.patchUserProfile();
       }
 
       onStop() {
-        BdApi.Patcher.unpatchAll("CustomBadge");
+        // Retirer les badges ajoutés lorsque le plugin est arrêté
+        BdApi.Patcher.unpatchAll("CustomProfileBadge");
       }
 
       patchUserProfile() {
         const userProfileMod = WebpackModules.getByProps("getUserProfile");
-        const currentUserId = BdApi.findModuleByProps("getCurrentUser").getCurrentUser().id;
+        const currentUserId = WebpackModules.getByProps("getCurrentUser").getCurrentUser().id;
 
-        BdApi.Patcher.after("CustomBadge", userProfileMod, "getUserProfile", (_, args, ret) => {
+        BdApi.Patcher.after("CustomProfileBadge", userProfileMod, "getUserProfile", (_, args, ret) => {
           if (ret?.userId !== currentUserId) return;
 
           const existing = new Set(ret.badges.map(b => b.icon + b.description));
@@ -70,10 +71,11 @@ module.exports = (() => {
             const key = icon + description;
             if (!existing.has(key)) {
               existing.add(key);
-              ret.badges.push({ id, icon, description, link: "https://github.com/NinjaPanic/CustomBadge" });
+              ret.badges.push({ id, icon, description, link: "https://github.com/YourUsername/CustomProfileBadge" });
             }
           };
 
+          // Ajouter des badges personnalisés avec des codes hash pour l'icône
           addBadge("dev", "6bdc42827a38498929a4920da12695d9", "Active Developer");
           addBadge("bug", "848f79194d4be5ff5f81505cbd0ce1e6", "Discord Bug Hunter");
           addBadge("mod", "fee1624003e2fee35cb398e125dc479b", "Moderator Program Alumni");
