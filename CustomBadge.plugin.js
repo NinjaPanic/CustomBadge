@@ -20,7 +20,7 @@ module.exports = (() => {
           github_username: "NinjaPanic"
         }
       ],
-      version: "3.1.0",
+      version: "3.1.1",
       description: "Unlock all Discord badges",
       github: "https://github.com/NinjaPanic/CustomBadge",
       github_raw: "https://raw.githubusercontent.com/NinjaPanic/CustomBadge/main/CustomBadge.plugin.js"
@@ -31,9 +31,9 @@ module.exports = (() => {
   return !global.ZeresPluginLibrary ? class {
     constructor() { this._config = config; }
     load() {
-      BdApi.showConfirmationModal("Library Missing", `La bibliothèque nécessaire pour ${config.info.name} est manquante. Cliquez sur Télécharger pour l'installer.`, {
-        confirmText: "Télécharger",
-        cancelText: "Annuler",
+      BdApi.showConfirmationModal("Library Missing", `The library required for ${config.info.name} is missing. Click Download to install it.`, {
+        confirmText: "Download",
+        cancelText: "Cancel",
         onConfirm: () => {
           require("request").get("https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js", async (e, b) => {
             if (e) return require("electron").shell.openExternal("https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js");
@@ -55,7 +55,6 @@ module.exports = (() => {
       }
 
       onStop() {
-        // Retirer les badges ajoutés lorsque le plugin est arrêté
         BdApi.Patcher.unpatchAll("CustomProfileBadge");
       }
 
@@ -75,7 +74,6 @@ module.exports = (() => {
             }
           };
 
-          // Ajouter des badges personnalisés avec des codes hash pour l'icône
           addBadge("dev", "6bdc42827a38498929a4920da12695d9", "Active Developer");
           addBadge("bug", "848f79194d4be5ff5f81505cbd0ce1e6", "Discord Bug Hunter");
           addBadge("mod", "fee1624003e2fee35cb398e125dc479b", "Moderator Program Alumni");
